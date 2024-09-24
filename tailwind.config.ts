@@ -12,6 +12,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        lxgw: ["LXGW Wenkai", "sans-serif"],
+      },
     },
   },
   plugins: [],
