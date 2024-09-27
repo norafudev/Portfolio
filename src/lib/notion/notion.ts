@@ -4,4 +4,6 @@ const notion = new Client({
   auth: process.env.NOTION_KEY,
 });
 
-export default notion;
+const databaseId = process.env.NOTION_DATABASE_ID as string;
+
+export { notion, databaseId };
