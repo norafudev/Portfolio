@@ -51,7 +51,7 @@ const getDatabase = async (): Promise<NotionPageProps[]> => {
   return transformNotionData(response.results as PageObjectResponse[]);
 };
 
-export const getCachedDatabase = unstable_cache(getDatabase, ["posts"], {
+export const getCachedDatabase = unstable_cache(getDatabase, ["database"], {
   revalidate: 3600,
-  tags: ["posts"],
+  tags: ["database"],
 });
