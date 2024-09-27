@@ -1,28 +1,10 @@
 import { NotionPageProps, PageObjectResponse } from "@/lib/types";
-import notion from "./notion";
+import { notion, databaseId } from "./notion";
+import { unstable_cache } from "next/cache";
 
-const databaseId = process.env.NOTION_DATABASE_ID as string;
-
-export const getDatabase = async (): Promise<NotionPageProps[]> => {
-  const response = await notion.databases.query({
-    database_id: databaseId,
-    filter: {
-      property: "status",
-      status: {
-        equals: "Published",
-      },
-    },
-    sorts: [
-      {
-        property: "published_at",
-        direction: "ascending",
-      },
-    ],
-  });
-  return transformNotionData(response.results as PageObjectResponse[]);
-};
-
-function transformNotionData(pages: PageObjectResponse[]): NotionPageProps[] {
+const transformNotionData = (
+  pages: PageObjectResponse[]
+): NotionPageProps[] => {
   return pages.map(({ id, last_edited_time, cover, properties }) => ({
     id,
     title:
@@ -48,4 +30,28 @@ function transformNotionData(pages: PageObjectResponse[]): NotionPageProps[] {
       (properties.slug as { rich_text: Array<{ plain_text: string }> })
         .rich_text[0]?.plain_text ?? "",
   }));
-}
+};
+
+const getDatabase = async (): Promise<NotionPageProps[]> => {
+  const response = await notion.databases.query({
+    database_id: databaseId,
+    filter: {
+      property: "status",
+      status: {
+        equals: "Published",
+      },
+    },
+    sorts: [
+      {
+        property: "published_at",
+        direction: "ascending",
+      },
+    ],
+  });
+  return transformNotionData(response.results as PageObjectResponse[]);
+};
+
+export const getCachedDatabase = unstable_cache(getDatabase, ["posts"], {
+  revalidate: 3600,
+  tags: ["posts"],
+});

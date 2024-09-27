@@ -15,7 +15,7 @@ const BlogCard = ({
       <Link href={`/blog/${slug}`}>
         <h1 className="text-xl font-bold line-clamp-1">{title}</h1>
       </Link>
-      <p className="text-sm text-gray-500">{published_at}</p>
+      <p className="text-sm">{published_at}</p>
       <div className="relative w-full aspect-video">
         <Image
           src={cover}
@@ -25,8 +25,10 @@ const BlogCard = ({
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
-      <p className="text-sm text-gray-500">{category}</p>
-      <p className="text-sm text-gray-500">{description}</p>
+      <p className="text-sm px-2 border rounded-xl w-fit border-slate-800">
+        {category}
+      </p>
+      <p>{description}</p>
     </div>
   );
 };
