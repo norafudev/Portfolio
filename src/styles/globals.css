@@ -3,3 +3,66 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* notion color */
+
+.blue {
+  @apply text-blue-600;
+}
+.brown {
+  @apply text-amber-700;
+}
+.gray {
+  @apply text-gray-500;
+}
+.green {
+  @apply text-green-500;
+}
+.orange {
+  @apply text-amber-500;
+}
+.pink {
+  @apply text-rose-400;
+}
+.purple {
+  @apply text-purple-700;
+}
+.red {
+  @apply text-red-500;
+}
+.yellow {
+  @apply text-yellow-500;
+}
+
+/* notion background color */
+.blue_background {
+  @apply bg-blue-50;
+}
+.brown_background {
+  @apply bg-amber-900 bg-opacity-10;
+}
+.gray_background {
+  @apply bg-gray-50;
+}
+.green_background {
+  @apply bg-emerald-50;
+}
+.orange_background {
+  @apply bg-orange-50;
+}
+.pink_background {
+  @apply bg-pink-50;
+}
+.purple_background {
+  @apply bg-purple-50;
+}
+.red_background {
+  @apply bg-red-50;
+}
+.yellow_background {
+  @apply bg-yellow-50;
+}
+
+.text-stroke-bold {
+  -webkit-text-stroke: 0.2px currentColor;
+}

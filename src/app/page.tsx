@@ -1,6 +1,5 @@
-import { getCachedDatabase } from "@/lib/notion/getDatabase";
+import { getCachedDatabase } from "@/lib/notion_client/getDatabase";
 import BlogCard from "@/components/blog/BlogCard";
-
 export default async function Home() {
   const database = await getCachedDatabase();
   return (

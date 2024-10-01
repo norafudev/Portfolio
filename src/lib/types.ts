@@ -8,6 +8,9 @@ export type {
   PartialPageObjectResponse,
   QueryDatabaseResponse,
   RichTextItemResponse,
+  TextRichTextItemResponse,
+  Heading1BlockObjectResponse,
+  ParagraphBlockObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
 export type NotionPageProps = {

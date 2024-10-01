@@ -11,6 +11,7 @@ const cleanBlock = (object: BlockResponse) => {
   delete object.parent;
   delete object.created_time;
   delete object.last_edited_time;
+  delete object.in_trash;
 };
 
 export const getBlocks = async (
